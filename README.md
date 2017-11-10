@@ -3,6 +3,6 @@
 
 A Django app to send text and emails to organised groups of people
 
-
+___
 ### First Commit,
 some basic templating and authentication including registration and email confirmation. 
