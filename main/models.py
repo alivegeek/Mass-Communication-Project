@@ -1,7 +1,15 @@
 from django.db import models
 from django.utils import timezone
 
-class Post(models.Model):
+
+class Groups(models.Model):
+    groupName =  models.CharField(max_length=50, db_index=True)
+    groupDesc = models.CharField(max_length=254, null=True)
+
+    def __str__(self):
+        return self.groupName + " " + self.groupDesc
+
+class Contacts(models.Model):
     firstName = models.CharField(max_length=25)
     lastName = models.CharField(max_length=25)
     phoneNumber = models.BigIntegerField()
@@ -11,6 +19,7 @@ class Post(models.Model):
             default=timezone.now)
     last_updated = models.DateTimeField(
             blank=True, null=True)
+    group = models.ManyToManyField(Groups)
 
     #
     # def publish(self):
@@ -19,3 +28,4 @@ class Post(models.Model):
     #
     def __str__(self):
         return self.firstName + " " + self.lastName
+

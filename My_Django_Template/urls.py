@@ -22,7 +22,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.index, name='index'),
     url(r'^accounts/', include('allauth.urls')),
-    url(r'^main/new/$', views.post_new, name='post_new'),
-
+    url(r'^main/new/contact$', views.post_new, name='post_new'),
+    url(r'^main/new/group', views.groupsForm, name='groupsForm'),
 
 ]
