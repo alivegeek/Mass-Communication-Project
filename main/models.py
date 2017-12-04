@@ -1,7 +1,6 @@
 from django.db import models
 from django.utils import timezone
 
-
 class Groups(models.Model):
     groupName =  models.CharField(max_length=50, db_index=True)
     groupDesc = models.CharField(max_length=254, null=True)
@@ -19,7 +18,7 @@ class Contacts(models.Model):
             default=timezone.now)
     last_updated = models.DateTimeField(
             blank=True, null=True)
-    group = models.ManyToManyField(Groups)
+    group = models.ManyToManyField(Groups, blank=True, null=True, through='GroupsToUser')
 
     #
     # def publish(self):
@@ -29,3 +28,9 @@ class Contacts(models.Model):
     def __str__(self):
         return self.firstName + " " + self.lastName
 
+class GroupsToUser(models.Model):
+    contact = models.ForeignKey(Contacts)
+    category = models.ForeignKey(Groups)
+
+    def __str__(self):
+        return '%s Member of Groups:  %s' % (self.contact, self.category)

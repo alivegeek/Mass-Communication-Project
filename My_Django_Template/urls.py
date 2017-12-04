@@ -23,6 +23,7 @@ urlpatterns = [
     url(r'^$', views.index, name='index'),
     url(r'^accounts/', include('allauth.urls')),
     url(r'^main/new/contact$', views.post_new, name='post_new'),
-    url(r'^main/new/group', views.groupsForm, name='groupsForm'),
+    url(r'^main/new/group', views.groups, name='groups'),
+    url(r'^main/edit/associations', views.users_to_groups, name='users_to_groups'),
 
 ]
