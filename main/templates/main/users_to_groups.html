@@ -1,7 +1,8 @@
 {% include "main/header.html" %}
 
 {% block content %}
-    <h1>Add Users to groups</h1>
+    <h1>Add users to groups</h1>
+    <p>{{ data }}</p>
     <form method="POST" class="groups">{% csrf_token %}
         <button type="submit" class="save btn btn-default">Save</button>
     </form>

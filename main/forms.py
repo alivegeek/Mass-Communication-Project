@@ -16,8 +16,9 @@ class Groups(forms.ModelForm):
         fields = ('groupName','groupDesc')
 
 class Users_to_groups_form(forms.ModelForm):
-
-    OPTIONS = []
     # groups = forms.ModelMultipleChoiceField(queryset=Groups.objects.all(), widget=forms.CheckboxSelectMultiple)
+    class Meta:
+        model = GroupsToUser
+        fields = ('contact','category')
 
     # Groups = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple, choices=options)

@@ -2,6 +2,7 @@ from datetime import timezone
 
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect
+from main.models import *
 
 from django.shortcuts import render
 from .forms import PostForm, Groups, Users_to_groups_form
@@ -37,7 +38,7 @@ def groups(request):
             return redirect('/')
     else:
         form = Groups()
-        currentGroups =
+        # currentGroups =
     return render(request, 'main/new_group.html', {'form': form})
 
 def users_to_groups(request):
@@ -59,7 +60,7 @@ def users_to_groups(request):
             post = form.save(commit=False)
             post.save()
             return redirect('/')
-    # else:
-        # form = Users_to_groups_form()
-
-    return render_to_response('users_to_groups.html', {'form':form })
+    else:
+        form = Users_to_groups_form()
+        data = Contacts.objects.all()
+    return render(request, 'main/users_to_groups.html', {'data': data, 'form':form})
